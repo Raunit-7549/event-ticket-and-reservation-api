@@ -69,15 +69,6 @@ public class EventRepository {
         return events;
     }
 
-//    public Event findEvent(int id){
-//        for(Event e : allEvents()){
-//            if(e.getId() == id){
-//                return e;
-//            }
-//        }
-//        return null;
-//    }
-
     public void updateEvent(Event e){
 
         String sql = "update events set title=?, venue=?, event_date=?, available_seats=?, ticket_price=? where id=?";
