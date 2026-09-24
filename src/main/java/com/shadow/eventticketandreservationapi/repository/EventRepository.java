@@ -50,7 +50,7 @@ public class EventRepository {
         return event;
     }
 
-    public List<Event> allEvents(){
+    public List<Event> events(){
 
         String sql = "select * from events";
 
@@ -69,11 +69,11 @@ public class EventRepository {
         return events;
     }
 
-    public void updateEvent(Event e){
+    public void updateEvent(Event e, int id){
 
         String sql = "update events set title=?, venue=?, event_date=?, available_seats=?, ticket_price=? where id=?";
 
-        template.update(sql, e.getTitle(), e.getVenue(), e.getEvent_date(), e.getAvailable_seats(), e.getTicket_price(), e.getId());
+        template.update(sql, e.getTitle(), e.getVenue(), e.getEvent_date(), e.getAvailable_seats(), e.getTicket_price(), id);
     }
 
     public void deleteEvent(int id){

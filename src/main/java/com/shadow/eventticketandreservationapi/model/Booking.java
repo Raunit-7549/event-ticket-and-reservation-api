@@ -11,6 +11,10 @@ public class Booking {
     private int tickets_booked;
     private LocalDateTime booking_time;
 
+    public Booking(){
+
+    }
+
     public Booking(int id, int event_id, String customer_name, String customer_email, int tickets_booked, LocalDateTime booking_time) {
         this.id = id;
         this.event_id = event_id;
