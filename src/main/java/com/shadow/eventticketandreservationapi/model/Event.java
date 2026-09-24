@@ -11,6 +11,10 @@ public class Event {
     private int available_seats;
     private float ticket_price;
 
+    public Event(){
+
+    }
+
     public Event(int id, String title, String venue, LocalDate event_date, int available_seats, float ticket_price) {
         this.id = id;
         this.title = title;
@@ -67,4 +71,5 @@ public class Event {
     public void setTicket_price(float ticket_price) {
         this.ticket_price = ticket_price;
     }
+
 }
