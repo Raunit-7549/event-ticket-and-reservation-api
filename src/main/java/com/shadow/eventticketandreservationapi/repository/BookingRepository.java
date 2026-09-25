@@ -26,7 +26,7 @@ public class BookingRepository {
 
         String sql = "insert into bookings (id, event_id, customer_name, customer_email, tickets_booked, booking_time) values(?,?,?,?,?,?)";
 
-        int row = template.update(sql, booking.getId(), booking.getEvent_id(), booking.getCustomer_name(), booking.getCustomer_email(), booking.getTickets_booked(), booking.getBooking_time());
+        int row = template.update(sql, booking.getId(), booking.getEventId(), booking.getCustomerName(), booking.getCustomerEmail(), booking.getTicketsBooked(), booking.getBookingTime());
     }
 
     public Booking bookingInfo(int id){
@@ -36,11 +36,11 @@ public class BookingRepository {
         Booking booking = template.queryForObject(sql, (rs, rowNum) ->{
             Booking b = new Booking();
             b.setId(rs.getInt(1));
-            b.setEvent_id(rs.getInt(2));
-            b.setCustomer_name(rs.getString(3));
-            b.setCustomer_email(rs.getString(4));
-            b.setTickets_booked(rs.getInt(5));
-            b.setBooking_time(rs.getObject(6, LocalDateTime.class));
+            b.setEventId(rs.getInt(2));
+            b.setCustomerName(rs.getString(3));
+            b.setCustomerEmail(rs.getString(4));
+            b.setTicketsBooked(rs.getInt(5));
+            b.setBookingTime(rs.getObject(6, LocalDateTime.class));
             return b;
         }, id);
 
@@ -54,11 +54,11 @@ public class BookingRepository {
         List<Booking> bookings = template.query(sql, (rs, rowNum) ->{
             Booking b = new Booking();
             b.setId(rs.getInt(1));
-            b.setEvent_id(rs.getInt(2));
-            b.setCustomer_name(rs.getString(3));
-            b.setCustomer_email(rs.getString(4));
-            b.setTickets_booked(rs.getInt(5));
-            b.setBooking_time(rs.getObject(6, LocalDateTime.class));
+            b.setEventId(rs.getInt(2));
+            b.setCustomerName(rs.getString(3));
+            b.setCustomerEmail(rs.getString(4));
+            b.setTicketsBooked(rs.getInt(5));
+            b.setBookingTime(rs.getObject(6, LocalDateTime.class));
             return b;
         });
 
@@ -69,7 +69,7 @@ public class BookingRepository {
 
         String sql = "update bookings set event_id=?, customer_name=?, customer_email=?, tickets_booked=?, booking_time=? where id=?";
 
-        template.update(sql, booking.getEvent_id(), booking.getCustomer_name(), booking.getCustomer_email(), booking.getTickets_booked(), booking.getBooking_time(), id);
+        template.update(sql, booking.getEventId(), booking.getCustomerName(), booking.getCustomerEmail(), booking.getTicketsBooked(), booking.getBookingTime(), id);
     }
 
     public void deleteBooking(int id){

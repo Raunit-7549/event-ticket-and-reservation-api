@@ -5,23 +5,23 @@ import java.time.LocalDateTime;
 public class Booking {
 
     private int id;
-    private int event_id;
-    private String customer_name;
-    private String customer_email;
-    private int tickets_booked;
-    private LocalDateTime booking_time;
+    private int eventId;
+    private String customerName;
+    private String customerEmail;
+    private int ticketsBooked;
+    private LocalDateTime bookingTime;
 
     public Booking(){
 
     }
 
-    public Booking(int id, int event_id, String customer_name, String customer_email, int tickets_booked, LocalDateTime booking_time) {
+    public Booking(int id, int eventId, String customerName, String customerEmail, int ticketsBooked, LocalDateTime bookingTime) {
         this.id = id;
-        this.event_id = event_id;
-        this.customer_name = customer_name;
-        this.customer_email = customer_email;
-        this.tickets_booked = tickets_booked;
-        this.booking_time = booking_time;
+        this.eventId = eventId;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.ticketsBooked = ticketsBooked;
+        this.bookingTime = bookingTime;
     }
 
     public int getId() {
@@ -32,43 +32,43 @@ public class Booking {
         this.id = id;
     }
 
-    public int getEvent_id() {
-        return event_id;
+    public int getEventId() {
+        return eventId;
     }
 
-    public void setEvent_id(int event_id) {
-        this.event_id = event_id;
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
-    public String getCustomer_name() {
-        return customer_name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public String getCustomer_email() {
-        return customer_email;
+    public String getCustomerEmail() {
+        return customerEmail;
     }
 
-    public void setCustomer_email(String customer_email) {
-        this.customer_email = customer_email;
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
-    public int getTickets_booked() {
-        return tickets_booked;
+    public int getTicketsBooked() {
+        return ticketsBooked;
     }
 
-    public void setTickets_booked(int tickets_booked) {
-        this.tickets_booked = tickets_booked;
+    public void setTicketsBooked(int ticketsBooked) {
+        this.ticketsBooked = ticketsBooked;
     }
 
-    public LocalDateTime getBooking_time() {
-        return booking_time;
+    public LocalDateTime getBookingTime() {
+        return bookingTime;
     }
 
-    public void setBooking_time(LocalDateTime booking_time) {
-        this.booking_time = booking_time;
+    public void setBookingTime(LocalDateTime bookingTime) {
+        this.bookingTime = bookingTime;
     }
 }

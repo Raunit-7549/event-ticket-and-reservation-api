@@ -7,21 +7,21 @@ public class Event {
     private int id;
     private String title;
     private String venue;
-    private LocalDate event_date;
-    private int available_seats;
-    private float ticket_price;
+    private LocalDate eventDate;
+    private int availableSeats;
+    private float ticketPrice;
 
     public Event(){
 
     }
 
-    public Event(int id, String title, String venue, LocalDate event_date, int available_seats, float ticket_price) {
+    public Event(int id, String title, String venue, LocalDate eventDate, int availableSeats, float ticketPrice) {
         this.id = id;
         this.title = title;
         this.venue = venue;
-        this.event_date = event_date;
-        this.available_seats = available_seats;
-        this.ticket_price = ticket_price;
+        this.eventDate = eventDate;
+        this.availableSeats = availableSeats;
+        this.ticketPrice = ticketPrice;
     }
 
     public int getId() {
@@ -48,28 +48,28 @@ public class Event {
         this.venue = venue;
     }
 
-    public LocalDate getEvent_date() {
-        return event_date;
+    public LocalDate getEventDate() {
+        return eventDate;
     }
 
-    public void setEvent_date(LocalDate event_date) {
-        this.event_date = event_date;
+    public void setEventDate(LocalDate eventDate) {
+        this.eventDate = eventDate;
     }
 
-    public int getAvailable_seats() {
-        return available_seats;
+    public int getAvailableSeats() {
+        return availableSeats;
     }
 
-    public void setAvailable_seats(int available_seats) {
-        this.available_seats = available_seats;
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
     }
 
-    public float getTicket_price() {
-        return ticket_price;
+    public float getTicketPrice() {
+        return ticketPrice;
     }
 
-    public void setTicket_price(float ticket_price) {
-        this.ticket_price = ticket_price;
+    public void setTicketPrice(float ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 
 }

@@ -27,7 +27,7 @@ public class EventRepository {
 
         String sql = "insert into events (id, title, venue, event_date, available_seats, ticket_price) values(?, ?, ?, ?, ?, ?)";
 
-        int row = template.update(sql, event.getId(), event.getTitle(), event.getVenue(), event.getEvent_date(), event.getAvailable_seats(), event.getTicket_price());
+        int row = template.update(sql, event.getId(), event.getTitle(), event.getVenue(), event.getEventDate(), event.getAvailableSeats(), event.getTicketPrice());
     }
 
     public Event eventInfo(int id){
@@ -40,9 +40,9 @@ public class EventRepository {
             e.setId(rs.getInt(1));
             e.setTitle(rs.getString(2));
             e.setVenue(rs.getString(3));
-            e.setEvent_date(rs.getObject(4, LocalDate.class));
-            e.setAvailable_seats(rs.getInt(5));
-            e.setTicket_price(rs.getFloat(6));
+            e.setEventDate(rs.getObject(4, LocalDate.class));
+            e.setAvailableSeats(rs.getInt(5));
+            e.setTicketPrice(rs.getFloat(6));
             return e;
 
         }, id);
@@ -60,9 +60,9 @@ public class EventRepository {
             e.setId(rs.getInt(1));
             e.setTitle(rs.getString(2));
             e.setVenue(rs.getString(3));
-            e.setEvent_date(rs.getObject(4, LocalDate.class));
-            e.setAvailable_seats(rs.getInt(5));
-            e.setTicket_price(rs.getFloat(6));
+            e.setEventDate(rs.getObject(4, LocalDate.class));
+            e.setAvailableSeats(rs.getInt(5));
+            e.setTicketPrice(rs.getFloat(6));
             return e;
         });
 
@@ -73,7 +73,7 @@ public class EventRepository {
 
         String sql = "update events set title=?, venue=?, event_date=?, available_seats=?, ticket_price=? where id=?";
 
-        template.update(sql, e.getTitle(), e.getVenue(), e.getEvent_date(), e.getAvailable_seats(), e.getTicket_price(), id);
+        template.update(sql, e.getTitle(), e.getVenue(), e.getEventDate(), e.getAvailableSeats(), e.getTicketPrice(), id);
     }
 
     public void deleteEvent(int id){
@@ -81,5 +81,16 @@ public class EventRepository {
         String sql = "delete from events where id=?";
 
         template.update(sql, id);
+    }
+
+    public void decreaseAvailableSeats(int id, int seats){
+
+        String sql = "update events set available_seats=available_seats-? where id=?";
+        template.update(sql, seats, id);
+    }
+    public void increaseAvailableSeats(int id, int seats){
+
+        String sql = "update events set available_seats=available_seats+? where id=?";
+        template.update(sql, seats, id);
     }
 }

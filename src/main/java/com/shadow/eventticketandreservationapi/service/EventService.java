@@ -22,14 +22,17 @@ public class EventService {
         LocalDate todayDate = LocalDate.now();
 
         return events.stream()
-                .filter(event-> event.getEvent_date() != null)
-                .filter(event -> event.getEvent_date().isAfter(todayDate))
+                .filter(event-> event.getEventDate() != null)
+                .filter(event -> event.getEventDate().isAfter(todayDate))
                 .collect(Collectors.toList());
     }
 
     public Event getEventDetailsByID(int id){
-
-        return eventRepo.eventInfo(id);
+        Event event = eventRepo.eventInfo(id);
+        if(event == null){
+            throw new RuntimeException("Event not found with ID : " + id);
+        }
+        return event;
     }
 
     public List<Event> getEventsByVenue(String venue){
@@ -43,15 +46,15 @@ public class EventService {
 
     public void createEvent(Event event){
 
-        if(event.getEvent_date() == null || !event.getEvent_date().isAfter(LocalDate.now())){
+        if(event.getEventDate() == null || !event.getEventDate().isAfter(LocalDate.now())){
             throw new IllegalArgumentException("Event date must be in the future");
         }
 
-        if(event.getTicket_price() < 0){
+        if(event.getTicketPrice() < 0){
             throw new IllegalArgumentException("Event price cannot be negative");
         }
 
-        if(event.getAvailable_seats() <= 0){
+        if(event.getAvailableSeats() <= 0){
             throw new IllegalArgumentException("Available seats must be greater than zero");
         }
 
@@ -64,11 +67,11 @@ public class EventService {
             throw new RuntimeException("Event not found with ID : " + id);
         }
 
-        if(event.getEvent_date() == null || !event.getEvent_date().isAfter(LocalDate.now())){
+        if(event.getEventDate() == null || !event.getEventDate().isAfter(LocalDate.now())){
             throw new IllegalArgumentException("Event date must be in the future");
         }
 
-        if(event.getTicket_price() < 0){
+        if(event.getTicketPrice() < 0){
             throw new IllegalArgumentException("Event price cannot be negative");
         }
 
@@ -77,11 +80,13 @@ public class EventService {
 
     public void cancelEvent(int id){
 
-        if(eventRepo.eventInfo(id) == null){
+        Event event = eventRepo.eventInfo(id);
+
+        if(event == null){
             throw new RuntimeException("Event not found with ID : " + id);
         }
 
-        if(eventRepo.eventInfo(id).getEvent_date() == null || !eventRepo.eventInfo(id).getEvent_date().isAfter(LocalDate.now())){
+        if(event.getEventDate() == null || !event.getEventDate().isAfter(LocalDate.now())){
             throw new IllegalArgumentException("Event date must be in the future");
         }
 
