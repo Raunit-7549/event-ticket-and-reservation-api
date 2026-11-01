@@ -115,7 +115,7 @@ Application settings are stored in:
 ```properties
 spring.application.name=EventTicketAndReservationAPI
 
-spring.datasource.url=jdbc:mysql://172.21.240.1:3306/event_db
+spring.datasource.url={DB_URL}
 spring.datasource.username=root
 spring.datasource.password=${DB_PASSWORD:root}
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
